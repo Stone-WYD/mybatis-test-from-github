@@ -31,13 +31,13 @@ public class MyBatisTest {
     }
 
     @Test
-    public void testMyBatis() throws IOException {
+    public void testMyBatis() {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             ArticleDao articleDao = session.getMapper(ArticleDao.class);
             List<Article> articles = articleDao.
                 findByAuthorAndCreateTime("coolblog.xyz", "2018-06-10");
-
+            articles.forEach(System.out::println);
         } finally {
             session.commit();
             session.close();

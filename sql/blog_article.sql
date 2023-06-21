@@ -33,6 +33,6 @@ CREATE TABLE `blog_article`  (
 -- ----------------------------
 -- Records of blog_article
 -- ----------------------------
-INSERT INTO `blog_article` VALUES (1, 'mybatis-test', 'coolblog.xyz', 'mybatis test', '2018-01-13 16:29:31');
+INSERT INTO `blog_article` VALUES (1, 'mybatis-test', 'coolblog.xyz', 'mybatis test', '2018-11-13 16:29:31');
 
 SET FOREIGN_KEY_CHECKS = 1;
