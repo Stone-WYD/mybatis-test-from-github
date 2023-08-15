@@ -21,7 +21,7 @@ public class ParamNameResolverTest {
     public void test() throws NoSuchMethodException, NoSuchFieldException, IllegalAccessException {
         Configuration config = new Configuration();
         config.setUseActualParamName(false);
-        Method method = ArticleMapper.class.getMethod("select", Integer.class, String.class, RowBounds.class, Article.class);
+        Method method = ArticleMapper.class.getMethod("select", Integer.class, String.class, RowBounds.class, Article.class, Integer.class);
 
         ParamNameResolver resolver = new ParamNameResolver(config, method);
         Field field = resolver.getClass().getDeclaredField("names");
@@ -44,7 +44,7 @@ public class ParamNameResolverTest {
 
     class ArticleMapper {
 
-        public void select(@Param("id") Integer id, @Param("author") String author, RowBounds rb, Article article) {}
+        public void select(@Param("id") Integer id, @Param("author") String author, RowBounds rb, Article article, Integer age) {}
 
         public void select(@Param("id") Integer id, @Param("author") String author, RowBounds rb, Integer age) {}
     }
