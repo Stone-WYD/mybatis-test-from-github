@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import xyz.coolblog.chapter4.model.Article;
 import xyz.coolblog.chapter4.model.Author;
 
+import java.util.List;
+
 
 /**
  * ArticleDao
@@ -16,4 +18,8 @@ public interface ArticleDao {
     Article findOne(@Param("id") int id);
 
     Author findAuthor(@Param("article_author_id") int authorId);
+
+    int updateAuthorName(@Param("id") int id);
+
+    List<Author> findAuthorWithArticles1();
 }

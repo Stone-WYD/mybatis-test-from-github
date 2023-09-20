@@ -12,6 +12,20 @@
         <association property="author" column="{id=author_id,name=title}" javaType="Author" select="findAuthor"/>
     </resultMap>
 
+    <resultMap id="authorWithArticles" type="Author">
+        <id property="id" column="id"/>
+<!--        <result property="type" column="type" typeHandler="xyz.coolblog.mybatis.ArticleTypeHandler"/>
+        <result property="createTime" column="create_time"/>-->
+        <collection property="articleList" column="{id=author_id,name=title}" javaType="Article" select="findArticles"/>
+    </resultMap>
+
+    <update id="updateAuthorName">
+        update author
+            set name = 'updateByWyd'
+        where
+            id = #{id}
+    </update>
+
     <select id="findOne" resultMap="articleResult">
         SELECT
             id, author_id, title, content, create_time
@@ -26,6 +40,24 @@
             id, name, age, sex, email
         FROM
             author
+        WHERE
+            id = #{article_author_id}
+    </select>
+
+    <select id="findAuthorWithArticles1" parameterType="Author" resultMap="authorWithArticles">
+        SELECT
+            id, name, age, sex, email
+        FROM
+            author
+        WHERE
+            id = #{id}
+    </select>
+
+    <select id="findArticles" resultType="Article">
+        SELECT
+            id, author_id, title, content, create_time
+        FROM
+            article
         WHERE
             id = #{id}
     </select>

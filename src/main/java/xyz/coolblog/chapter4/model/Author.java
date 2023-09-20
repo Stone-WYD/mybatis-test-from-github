@@ -1,6 +1,7 @@
 package xyz.coolblog.chapter4.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Author
@@ -20,6 +21,8 @@ public class Author implements Serializable {
 
     private String email;
 
+    private List<Article> articleList;
+
     public Author() {
     }
 
@@ -28,6 +31,15 @@ public class Author implements Serializable {
         this.age = age;
         this.sex = sex;
         this.email = email;
+    }
+
+    public Author(Integer id, String name, Integer age, Integer sex, String email, List<Article> articleList) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.email = email;
+        this.articleList = articleList;
     }
 
     public Integer getId() {
@@ -70,14 +82,23 @@ public class Author implements Serializable {
         this.email = email;
     }
 
+    public List<Article> getArticleList() {
+        return articleList;
+    }
+
+    public void setArticleList(List<Article> articleList) {
+        this.articleList = articleList;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", age=" + age +
-            ", sex=" + sex +
-            ", email='" + email + '\'' +
-            '}';
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", email='" + email + '\'' +
+                ", articleList=" + articleList +
+                '}';
     }
 }
